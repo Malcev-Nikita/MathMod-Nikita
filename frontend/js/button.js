@@ -1,4 +1,4 @@
-document.querySelectorAll('.main__button').forEach(button => {
+document.querySelectorAll('.button').forEach(button => {
 
     let div = document.createElement('div'),
         letters = button.textContent.trim().split('');

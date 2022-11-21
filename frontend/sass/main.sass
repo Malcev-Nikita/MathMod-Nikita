@@ -21,10 +21,14 @@ h2
 .example
     width: 0%
     height: 100%
-    background: #667b96
+    background: #56677e
     position: absolute
     top: 0
     overflow: hidden
+
+    h2
+        font-size: 24px
+        margin-top: 40px
 
     &__close
         position: absolute
@@ -40,12 +44,16 @@ h2
     &_unactive
         animation: window_close 0.2s ease-in
 
-.example2
-    right: 0
-    border-radius: 20px 0 0 20px
+    .first_step
+        div
+            display: flex
+            justify-content: center
+            margin-top: 30px
 
-    .example__close
-        left: 20px
+        select
+            margin-left: 20px
+            margin-top: 10px
+            transform: translateY(-11px)
 
 .example1
     left: 0
@@ -53,6 +61,18 @@ h2
 
     .example__close
         right: 20px
+
+.example2
+    right: 0
+    border-radius: 20px 0 0 20px
+
+    .example__close
+        left: 20px
+
+.next_step
+    position: absolute
+    bottom: 50px
+    right: 36%
 
 @keyframes window_close 
     0%

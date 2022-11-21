@@ -1,15 +1,15 @@
-.main__button.alternative {
+.button.alternative {
   --color-hover: #2B3044;
   --background: #362A89;
   --hover-back: #6D58FF;
   --hover-front: #F6F8FF;
 }
-.main__button.simple {
+.button.simple {
   --background: #275EFE;
   --background-hover: #1749DB;
 }
 
-.main__button {
+.button {
   --color: #fff;
   --color-hover: var(--color);
   --background: #00000000;
@@ -36,7 +36,7 @@
   transition: color 0.2s linear var(--c-d, 0.2s), background 0.3s linear var(--b-d, 0.2s);
   margin: 0 10px;
 }
-.main__button:not(.simple):before, .main__button:not(.simple):after {
+.button:not(.simple):before, .button:not(.simple):after {
   content: "";
   position: absolute;
   background: var(--pb, var(--hover-back));
@@ -48,17 +48,17 @@
   transform: translateY(var(--y, 50%));
   transition: transform var(--d, 0.4s) ease-in var(--d-d, 0s), border-radius 0.5s ease var(--br-d, 0.08s);
 }
-.main__button:not(.simple):after {
+.button:not(.simple):after {
   --pb: var(--hover-front);
   --d: .44s;
 }
-.main__button div {
+.button div {
   z-index: 1;
   position: relative;
   display: flex;
   justify-content: center;
 }
-.main__button div span {
+.button div span {
   display: block;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -66,19 +66,19 @@
   -webkit-animation: var(--name, none) 0.7s linear forwards 0.18s;
           animation: var(--name, none) 0.7s linear forwards 0.18s;
 }
-.main__button.in:not(.out) {
+.button.in:not(.out) {
   --c: var(--color-hover);
   --b: var(--background-hover);
 }
-.main__button.in:not(.out):before, .main__button.in:not(.out):after {
+.button.in:not(.out):before, .button.in:not(.out):after {
   --y: 0;
   --br: 5%;
 }
-.main__button.in:not(.out):after {
+.button.in:not(.out):after {
   --br: 10%;
   --d-d: .02s;
 }
-.main__button.in.out:before {
+.button.in.out:before {
   --d-d: .06s;
 }
 
@@ -109,10 +109,14 @@ h2 {
 .example {
   width: 0%;
   height: 100%;
-  background: #667b96;
+  background: #56677e;
   position: absolute;
   top: 0;
   overflow: hidden;
+}
+.example h2 {
+  font-size: 24px;
+  margin-top: 40px;
 }
 .example__close {
   position: absolute;
@@ -130,6 +134,24 @@ h2 {
   -webkit-animation: window_close 0.2s ease-in;
           animation: window_close 0.2s ease-in;
 }
+.example .first_step div {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.example .first_step select {
+  margin-left: 20px;
+  margin-top: 10px;
+  transform: translateY(-11px);
+}
+
+.example1 {
+  left: 0;
+  border-radius: 0 20px 20px 0;
+}
+.example1 .example__close {
+  right: 20px;
+}
 
 .example2 {
   right: 0;
@@ -139,12 +161,10 @@ h2 {
   left: 20px;
 }
 
-.example1 {
-  left: 0;
-  border-radius: 0 20px 20px 0;
-}
-.example1 .example__close {
-  right: 20px;
+.next_step {
+  position: absolute;
+  bottom: 50px;
+  right: 36%;
 }
 
 @-webkit-keyframes window_close {
