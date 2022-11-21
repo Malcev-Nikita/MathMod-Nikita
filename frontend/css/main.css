@@ -269,9 +269,20 @@ h2 {
 }
 .example .second_step {
   display: none;
+  text-align: center;
 }
 .example .second_step_active {
-  display: block;
+  display: inline-block;
+}
+.example .second_step__table {
+  margin: 0 auto;
+}
+.example .second_step__table input {
+  width: 60px;
+  height: 30px;
+}
+.example .second_step h3 {
+  font-size: 16px;
 }
 
 .example1 {
