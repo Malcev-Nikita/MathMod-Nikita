@@ -104,4 +104,77 @@ h1 {
 h2 {
   font-size: 16px;
   margin-bottom: 10%;
+}
+
+.example {
+  width: 0%;
+  height: 100%;
+  background: #667b96;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+.example__close {
+  position: absolute;
+  width: 35px;
+  top: 10px;
+  cursor: pointer;
+}
+.example_active {
+  display: block;
+  width: 50%;
+  -webkit-animation: window_open 0.7s;
+          animation: window_open 0.7s;
+}
+.example_unactive {
+  -webkit-animation: window_close 0.7s;
+          animation: window_close 0.7s;
+}
+
+.example2 {
+  right: 0;
+}
+.example2 .example__close {
+  left: 10px;
+}
+
+.example1 {
+  left: 0;
+}
+.example1 .example__close {
+  right: 10px;
+}
+
+@-webkit-keyframes window_close {
+  0% {
+    width: 50%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes window_close {
+  0% {
+    width: 50%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+@-webkit-keyframes window_open {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 50%;
+  }
+}
+@keyframes window_open {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 50%;
+  }
 }/*# sourceMappingURL=main.css.map */

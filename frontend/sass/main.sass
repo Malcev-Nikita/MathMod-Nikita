@@ -17,3 +17,49 @@ h2
     font-size: 16px
     margin-bottom: 10%
 
+
+.example
+    width: 0%
+    height: 100%
+    background: #667b96
+    position: absolute
+    top: 0
+    overflow: hidden
+
+    &__close
+        position: absolute
+        width: 35px
+        top: 10px
+        cursor: pointer
+    
+    &_active
+        display: block
+        width: 50%
+        animation: window_open 0.7s
+
+    &_unactive
+        animation: window_close 0.7s
+
+.example2
+    right: 0
+
+    .example__close
+        left: 10px
+
+.example1
+    left: 0
+
+    .example__close
+        right: 10px
+
+@keyframes window_close 
+    0%
+        width: 50%
+    100%
+        width: 0%
+
+@keyframes window_open 
+    0%
+        width: 0%
+    100%
+        width: 50%
