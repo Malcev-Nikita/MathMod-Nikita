@@ -251,6 +251,12 @@ h2 {
   -webkit-animation: window_close 0.2s ease-in;
           animation: window_close 0.2s ease-in;
 }
+.example .first_step {
+  display: none;
+}
+.example .first_step_active {
+  display: block;
+}
 .example .first_step div {
   display: flex;
   justify-content: center;
@@ -260,6 +266,12 @@ h2 {
   margin-left: 20px;
   margin-top: 10px;
   transform: translateY(-11px);
+}
+.example .second_step {
+  display: none;
+}
+.example .second_step_active {
+  display: block;
 }
 
 .example1 {

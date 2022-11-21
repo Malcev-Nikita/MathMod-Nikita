@@ -46,6 +46,10 @@ h2
         animation: window_close 0.2s ease-in
 
     .first_step
+        display: none
+
+        &_active
+            display: block
         div
             display: flex
             justify-content: center
@@ -55,6 +59,12 @@ h2
             margin-left: 20px
             margin-top: 10px
             transform: translateY(-11px)
+    
+    .second_step
+        display: none
+
+        &_active
+            display: block
 
 .example1
     left: 0
