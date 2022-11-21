@@ -82,6 +82,123 @@
   --d-d: .06s;
 }
 
+.error {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.7607843137);
+  overflow: hidden;
+  border-radius: 20px;
+}
+.error_active {
+  display: block;
+  border: red 4px solid;
+  width: 500px;
+  height: 150px;
+  margin-left: -250px;
+  margin-top: -75px;
+  -webkit-animation: error_open 0.4s ease-in;
+          animation: error_open 0.4s ease-in;
+}
+.error_unactive {
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  -webkit-animation: error_close 0.2s ease-out;
+          animation: error_close 0.2s ease-out;
+}
+.error__close {
+  width: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.error__text {
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 55px;
+}
+
+@-webkit-keyframes error_open {
+  0% {
+    display: block;
+    width: 0px;
+    hegiht: 0px;
+    margin: 0;
+  }
+  50% {
+    width: 550px;
+    height: 175px;
+    margin-left: -275px;
+    margin-top: -87.5px;
+  }
+  75% {
+    width: 490px;
+    height: 145px;
+    margin-left: -245px;
+    margin-top: -72.5px;
+  }
+  100% {
+    width: 500px;
+    height: 150px;
+    margin-left: -250px;
+    margin-top: -75px;
+  }
+}
+
+@keyframes error_open {
+  0% {
+    display: block;
+    width: 0px;
+    hegiht: 0px;
+    margin: 0;
+  }
+  50% {
+    width: 550px;
+    height: 175px;
+    margin-left: -275px;
+    margin-top: -87.5px;
+  }
+  75% {
+    width: 490px;
+    height: 145px;
+    margin-left: -245px;
+    margin-top: -72.5px;
+  }
+  100% {
+    width: 500px;
+    height: 150px;
+    margin-left: -250px;
+    margin-top: -75px;
+  }
+}
+@-webkit-keyframes error_close {
+  0% {
+    width: 500px;
+    height: 150px;
+    margin-left: -250px;
+    margin-top: -75px;
+  }
+  100% {
+    width: 0px;
+    height: 0px;
+    margin: 0;
+  }
+}
+@keyframes error_close {
+  0% {
+    width: 500px;
+    height: 150px;
+    margin-left: -250px;
+    margin-top: -75px;
+  }
+  100% {
+    width: 0px;
+    height: 0px;
+    margin: 0;
+  }
+}
 html {
   margin: 0;
   height: 100%;
@@ -161,10 +278,10 @@ h2 {
   left: 20px;
 }
 
-.next_step {
+.section_button {
   position: absolute;
   bottom: 50px;
-  right: 36%;
+  right: 20%;
 }
 
 @-webkit-keyframes window_close {

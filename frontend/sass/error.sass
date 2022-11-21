@@ -1,0 +1,67 @@
+.error
+    position: absolute
+    left: 50%
+    top: 50%
+    background: #000000c2
+    overflow: hidden
+    border-radius: 20px
+    
+    &_active
+        display: block
+        border: red 4px solid
+        width: 500px
+        height: 150px
+        margin-left: -250px
+        margin-top: -75px
+        animation: error_open 0.4s ease-in
+
+    &_unactive
+        width: 0px
+        height: 0px
+        overflow: hidden
+        animation: error_close 0.2s ease-out
+    
+    &__close
+        width: 30px
+        position: absolute
+        top: 10px
+        right: 10px
+        cursor: pointer
+
+    &__text
+        font-size: 17px
+        font-weight: 700
+        margin-top: 55px
+
+@keyframes error_open 
+    0%
+        display: block
+        width: 0px
+        hegiht: 0px
+        margin: 0
+    50%
+        width: 550px
+        height: 175px
+        margin-left: -275px
+        margin-top: -87.5px
+    75%
+        width: 490px
+        height: 145px
+        margin-left: -245px
+        margin-top: -72.5px
+    100%
+        width: 500px
+        height: 150px
+        margin-left: -250px
+        margin-top: -75px
+
+@keyframes error_close
+    0%
+        width: 500px
+        height: 150px
+        margin-left: -250px
+        margin-top: -75px
+    100%
+        width: 0px
+        height: 0px
+        margin: 0
