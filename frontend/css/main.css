@@ -117,32 +117,34 @@ h2 {
 .example__close {
   position: absolute;
   width: 35px;
-  top: 10px;
+  top: 17px;
   cursor: pointer;
 }
 .example_active {
   display: block;
   width: 50%;
-  -webkit-animation: window_open 0.7s;
-          animation: window_open 0.7s;
+  -webkit-animation: window_open 0.5s ease-out;
+          animation: window_open 0.5s ease-out;
 }
 .example_unactive {
-  -webkit-animation: window_close 0.7s;
-          animation: window_close 0.7s;
+  -webkit-animation: window_close 0.2s ease-in;
+          animation: window_close 0.2s ease-in;
 }
 
 .example2 {
   right: 0;
+  border-radius: 20px 0 0 20px;
 }
 .example2 .example__close {
-  left: 10px;
+  left: 20px;
 }
 
 .example1 {
   left: 0;
+  border-radius: 0 20px 20px 0;
 }
 .example1 .example__close {
-  right: 10px;
+  right: 20px;
 }
 
 @-webkit-keyframes window_close {
@@ -166,6 +168,12 @@ h2 {
   0% {
     width: 0%;
   }
+  50% {
+    width: 55%;
+  }
+  70% {
+    width: 49%;
+  }
   100% {
     width: 50%;
   }
@@ -173,6 +181,12 @@ h2 {
 @keyframes window_open {
   0% {
     width: 0%;
+  }
+  50% {
+    width: 55%;
+  }
+  70% {
+    width: 49%;
   }
   100% {
     width: 50%;
