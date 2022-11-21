@@ -1,0 +1,107 @@
+.main__button.alternative {
+  --color-hover: #2B3044;
+  --background: #362A89;
+  --hover-back: #6D58FF;
+  --hover-front: #F6F8FF;
+}
+.main__button.simple {
+  --background: #275EFE;
+  --background-hover: #1749DB;
+}
+
+.main__button {
+  --color: #fff;
+  --color-hover: var(--color);
+  --background: #00000000;
+  --background-hover: var(--background);
+  --hover-back: #6D58FF;
+  --hover-front: #5C86FF;
+  width: 250px;
+  height: 60px;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  color: var(--c, var(--color));
+  background: var(--b, var(--background));
+  transition: color 0.2s linear var(--c-d, 0.2s), background 0.3s linear var(--b-d, 0.2s);
+  margin: 0 10px;
+}
+.main__button:not(.simple):before, .main__button:not(.simple):after {
+  content: "";
+  position: absolute;
+  background: var(--pb, var(--hover-back));
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200%;
+  border-radius: var(--br, 40%);
+  transform: translateY(var(--y, 50%));
+  transition: transform var(--d, 0.4s) ease-in var(--d-d, 0s), border-radius 0.5s ease var(--br-d, 0.08s);
+}
+.main__button:not(.simple):after {
+  --pb: var(--hover-front);
+  --d: .44s;
+}
+.main__button div {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.main__button div span {
+  display: block;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-animation: var(--name, none) 0.7s linear forwards 0.18s;
+          animation: var(--name, none) 0.7s linear forwards 0.18s;
+}
+.main__button.in:not(.out) {
+  --c: var(--color-hover);
+  --b: var(--background-hover);
+}
+.main__button.in:not(.out):before, .main__button.in:not(.out):after {
+  --y: 0;
+  --br: 5%;
+}
+.main__button.in:not(.out):after {
+  --br: 10%;
+  --d-d: .02s;
+}
+.main__button.in.out:before {
+  --d-d: .06s;
+}
+
+html {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background: #323c49;
+  text-align: center;
+  color: white;
+}
+
+h1 {
+  margin-top: 200px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 16px;
+  margin-bottom: 10%;
+}/*# sourceMappingURL=main.css.map */
