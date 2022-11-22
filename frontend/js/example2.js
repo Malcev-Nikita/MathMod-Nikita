@@ -5,8 +5,12 @@ let next_step = document.getElementsByClassName('next_step')[0]
 
 let first_step = document.getElementsByClassName('first_step')[0]
 let second_step = document.getElementsByClassName('second_step')[0]
+let third_step = document.getElementsByClassName('third_step')[0]
 
-let steps = [first_step, second_step]
+let second_step__storage = document.getElementsByClassName('second_step__storage')[0]
+let second_step__requirement = document.getElementsByClassName('second_step__requirement')[0]
+
+let steps = [first_step, second_step, third_step]
 
 function CreateTableSecondStap(row, column)
 {
@@ -28,8 +32,58 @@ function CreateTableSecondStap(row, column)
             th.appendChild(input)
             tr.appendChild(th)
         }
-
+        
         document.getElementsByClassName('second_step__table')[0].appendChild(tr)
+    }
+}
+
+function CreateTableSecondStapStorage(row)
+{
+    document.getElementsByClassName('second_step__storage')[0].remove()
+
+    let table = document.createElement("table")
+    table.className = "second_step__storage"
+    second_step.appendChild(table)
+
+    let thead = document.createElement("thead")
+    thead.textContent = "Запасы"
+    document.getElementsByClassName('second_step__storage')[0].appendChild(thead)
+
+    for (let i = 0; i < row; i++)
+    {
+        let tr = document.createElement("tr")
+        let th = document.createElement("th")
+        let input = document.createElement("input")
+
+        th.appendChild(input)
+        tr.appendChild(th)
+
+        document.getElementsByClassName('second_step__storage')[0].appendChild(tr)
+    }
+}
+
+function CreateTableSecondStaprequirement(column)
+{
+    document.getElementsByClassName('second_step__requirement')[0].remove()
+
+    let table = document.createElement("table")
+    table.className = "second_step__requirement"
+    second_step.appendChild(table)
+
+    let thead = document.createElement("thead")
+    thead.textContent = "Потребности"
+    document.getElementsByClassName('second_step__requirement')[0].appendChild(thead)
+
+    for (let i = 0; i < column; i++)
+    {
+        let tr = document.createElement("tr")
+        let th = document.createElement("th")
+        let input = document.createElement("input")
+
+        th.appendChild(input)
+        tr.appendChild(th)
+
+        document.getElementsByClassName('second_step__requirement')[0].appendChild(tr)
     }
 }
 
@@ -52,9 +106,29 @@ next_step.addEventListener('click', function()
 {
     step++
 
-    if (step >= 2)
+    if (step == 2)
     {
-        new Error("Пока не завезли контент")
+        let input = document.querySelectorAll("input")
+        let valid = true;
+
+        for(let i = 0; i < input.length; i++)
+        {
+            if (!Number(input[i].value) || Number(input[i].value) <= 0)
+            {
+                new Error("Введены неправильные данные!")
+                valid = false
+            }
+        }
+
+        if (!valid)
+        {
+            step--
+        }
+    }
+
+    if (step >= 3)
+    {
+        new Error("Задача уже решена")
         step--
     }
 
@@ -68,5 +142,8 @@ next_step.addEventListener('click', function()
 
         CreateTableSecondStap(row_count.options[row_count.selectedIndex].text, 
                               column_count.options[column_count.selectedIndex].text)
+
+        CreateTableSecondStapStorage(row_count.options[row_count.selectedIndex].text)
+        CreateTableSecondStaprequirement(column_count.options[column_count.selectedIndex].text)
     }
 })

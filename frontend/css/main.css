@@ -277,12 +277,51 @@ h2 {
 .example .second_step__table {
   margin: 0 auto;
 }
-.example .second_step__table input {
+.example .second_step__table input, .example .second_step__table th {
   width: 60px;
   height: 30px;
 }
 .example .second_step h3 {
   font-size: 16px;
+  font-weight: 400;
+  margin-left: -62px;
+  transform: translateY(29px);
+}
+.example .third_step {
+  display: none;
+  text-align: center;
+}
+.example .third_step_active {
+  display: inline-block;
+}
+.example .third_step textarea {
+  width: 650px;
+  height: 500px;
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+  resize: none;
+  border: 2px solid gray;
+}
+
+.second_step__storage, .second_step__table {
+  display: inline-block;
+  margin-left: 5px;
+}
+.second_step__storage input, .second_step__storage th, .second_step__table input, .second_step__table th {
+  width: 60px;
+  height: 30px;
+}
+
+.second_step__requirement {
+  display: flex;
+  margin-left: -101.5px;
+}
+.second_step__requirement input, .second_step__requirement th {
+  width: 60px;
+  height: 30px;
+}
+.second_step__requirement thead {
+  margin-right: 5px;
 }
 
 .example1 {
@@ -304,7 +343,7 @@ h2 {
 .section_button {
   position: absolute;
   bottom: 50px;
-  right: 20%;
+  width: 100%;
 }
 
 @-webkit-keyframes window_close {
