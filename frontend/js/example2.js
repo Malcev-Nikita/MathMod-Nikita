@@ -10,6 +10,9 @@ let third_step = document.getElementsByClassName('third_step')[0]
 let second_step__storage = document.getElementsByClassName('second_step__storage')[0]
 let second_step__requirement = document.getElementsByClassName('second_step__requirement')[0]
 
+let row_count
+let column_count
+
 let steps = [first_step, second_step, third_step]
 
 function CreateTableSecondStap(row, column)
@@ -28,6 +31,7 @@ function CreateTableSecondStap(row, column)
         {
             let th = document.createElement("th")
             let input = document.createElement("input")
+            input.classList.add("example2_input_matrix")
 
             th.appendChild(input)
             tr.appendChild(th)
@@ -54,6 +58,7 @@ function CreateTableSecondStapStorage(row)
         let tr = document.createElement("tr")
         let th = document.createElement("th")
         let input = document.createElement("input")
+        input.classList.add("example2_input_storage")
 
         th.appendChild(input)
         tr.appendChild(th)
@@ -79,6 +84,7 @@ function CreateTableSecondStaprequirement(column)
         let tr = document.createElement("tr")
         let th = document.createElement("th")
         let input = document.createElement("input")
+        input.classList.add("example2_input_requirement")
 
         th.appendChild(input)
         tr.appendChild(th)
@@ -137,8 +143,8 @@ next_step.addEventListener('click', function()
 
     if (step == 1) 
     {
-        let row_count = document.getElementsByClassName("row_count")[0]
-        let column_count = document.getElementsByClassName("column_count")[0]
+        row_count = document.getElementsByClassName("row_count")[0]
+        column_count = document.getElementsByClassName("column_count")[0]
 
         CreateTableSecondStap(row_count.options[row_count.selectedIndex].text, 
                               column_count.options[column_count.selectedIndex].text)
@@ -146,4 +152,11 @@ next_step.addEventListener('click', function()
         CreateTableSecondStapStorage(row_count.options[row_count.selectedIndex].text)
         CreateTableSecondStaprequirement(column_count.options[column_count.selectedIndex].text)
     }
+
+    else if (step == 2) 
+    {
+        Result(Number(row_count.options[row_count.selectedIndex].text), 
+               Number(column_count.options[column_count.selectedIndex].text))
+    }
+
 })
