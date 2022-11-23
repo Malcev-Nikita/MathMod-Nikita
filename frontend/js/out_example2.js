@@ -1,4 +1,4 @@
-let result_textarea = document.getElementById("result")
+let result_div = document.getElementsByClassName("result")[0]
 let result;
 
 
@@ -8,20 +8,7 @@ function Result(row, column)
     let storage = GetStorage()
     let requirement = GetRequirement()
 
-    let a = SumA(storage)
-    let b = SumB(requirement)
-    let ab = ""
-    if (a != b) ab = "не"
-
-    result_textarea.value = 
-    `
-    Проверим необходимое и достаточное условие разрешимости задачи.
-
-    a = ${a}
-    b = ${b}
-
-    Задача является ${ab} сбалансированной
-    `
+    matrix = PreTable(matrix, storage, requirement)
 }
 
 function GetMatrix(row, column)
@@ -70,26 +57,42 @@ function GetRequirement()
     return array
 }
 
-function SumA(storage)
+function PreTable(matrix, storage, requirement)
 {
-    let sum = 0
+    let sum_storage = 0
+    let sum_requirement = 0
 
     for (let i = 0; i < storage.length; i++)
     {
-        sum += storage[i]
+        sum_storage += storage[i]
     }
-
-    return sum;
-}
-
-function SumB(requirement)
-{
-    let sum = 0
 
     for (let i = 0; i < requirement.length; i++)
     {
-        sum += requirement[i]
+        sum_requirement += requirement[i]
     }
 
-    return sum;
+
+    if (sum_storage < sum_requirement)
+    {
+        let pre = []
+
+        for (let i = 0; i < matrix.length; i++)
+        {
+            pre[i] = 0
+        }
+        storage[matrix[0].length] = sum_requirement - sum_storage
+
+        matrix[matrix.length] = pre
+    }
+    else if (sum_storage > sum_requirement)
+    {
+        for (let i = 0; i < matrix.length; i++)
+        {
+            matrix[i][matrix[i].length] = 0
+        }
+        requirement[matrix[0].length] = sum_storage - sum_requirement 
+    }
+
+    return matrix
 }
