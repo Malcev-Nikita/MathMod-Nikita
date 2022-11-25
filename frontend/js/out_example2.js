@@ -97,3 +97,22 @@ function PreTable(matrix, storage, requirement)
     return matrix
 }
 
+function MinElement(matrix)
+{
+    let min = 0;
+
+    for (let i = 0; i < matrix.length; i++)
+    {
+        for (let j = 0; j < matrix[i].length; i++)
+        {
+            if (min > matrix[i][j]) min = matrix[i][j]
+        }
+    }
+}
+
+function ReferencePlan(matrix, storage, requirement)
+{
+    let min = MinElement(matrix)
+
+    
+}
