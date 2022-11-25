@@ -95,68 +95,10 @@ function CreateTableSecondStaprequirement(column)
 
 back_step.addEventListener('click', function() 
 {
-    if (step <= 0)
-    {
-        new Error("Вы ещё не прошли дальше, чтобы вернуться назад")
-    }
-    else
-    {
-        step--
-
-        steps[step].classList.add(steps[step].classList[0] + "_active")
-        steps[step + 1].classList.remove(steps[step + 1].classList[0] + "_active")
-    }
+    step = back(step)
 })
 
 next_step.addEventListener('click', function() 
 {
-    step++
-
-    if (step == 2)
-    {
-        let input = document.querySelectorAll("input")
-        let valid = true;
-
-        for(let i = 0; i < input.length; i++)
-        {
-            if (!Number(input[i].value) || Number(input[i].value) <= 0)
-            {
-                new Error("Введены неправильные данные!")
-                valid = false
-            }
-        }
-
-        if (!valid)
-        {
-            step--
-        }
-    }
-
-    if (step >= 3)
-    {
-        new Error("Задача уже решена")
-        step--
-    }
-
-    steps[step - 1].classList.remove(steps[step - 1].classList[0] + "_active")
-    steps[step].classList.add(steps[step].classList[0] + "_active")
-
-    if (step == 1) 
-    {
-        row_count = document.getElementsByClassName("row_count")[0]
-        column_count = document.getElementsByClassName("column_count")[0]
-
-        CreateTableSecondStap(row_count.options[row_count.selectedIndex].text, 
-                              column_count.options[column_count.selectedIndex].text)
-
-        CreateTableSecondStapStorage(row_count.options[row_count.selectedIndex].text)
-        CreateTableSecondStaprequirement(column_count.options[column_count.selectedIndex].text)
-    }
-
-    else if (step == 2) 
-    {
-        Result(Number(row_count.options[row_count.selectedIndex].text), 
-               Number(column_count.options[column_count.selectedIndex].text))
-    }
-
+    step = next(step)
 })
