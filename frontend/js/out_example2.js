@@ -1,7 +1,7 @@
 let result_div = document.getElementsByClassName("result")[0]
 let result;
 
-
+// Вывод решения в программе
 function Result(row, column)
 {
     let matrix = GetMatrix(row, column)
@@ -9,12 +9,15 @@ function Result(row, column)
     let requirement = GetRequirement()
 
     matrix = PreTable(matrix, storage, requirement)
+    let F = ReferencePlan(matrix, storage, requirement)
+    console.log(F)
 }
 
+// Составить матрицу данных по матрице тарифов
 function GetMatrix(row, column)
 {
     let input = document.getElementsByClassName("example2_input_matrix")
-    let array = new Array(column);
+    let array = [];
     let a = 0
 
     for (let i = 0; i < row; i++)
@@ -31,6 +34,7 @@ function GetMatrix(row, column)
     return array
 }
 
+// Составить массив по запасам
 function GetStorage()
 {
     let input = document.getElementsByClassName("example2_input_storage")
@@ -38,12 +42,13 @@ function GetStorage()
 
     for (let i = 0; i < input.length; i++)
     {
-        array.push(Number(input[i].value))
+        array[i] = Number(input[i].value)
     }
 
     return array
 }
 
+// Составить массив по потребностям
 function GetRequirement()
 {
     let input = document.getElementsByClassName("example2_input_requirement")
@@ -51,12 +56,13 @@ function GetRequirement()
 
     for (let i = 0; i < input.length; i++)
     {
-        array.push(Number(input[i].value))
+        array[i] = Number(input[i].value)
     }
 
     return array
 }
 
+// Составление оптимальной таблицы
 function PreTable(matrix, storage, requirement)
 {
     let sum_storage = 0
@@ -77,11 +83,11 @@ function PreTable(matrix, storage, requirement)
     {
         let pre = []
 
-        for (let i = 0; i < matrix.length; i++)
+        for (let i = 0; i < matrix[0].length; i++)
         {
             pre[i] = 0
         }
-        storage[matrix[0].length] = sum_requirement - sum_storage
+        storage[matrix.length] = sum_requirement - sum_storage
 
         matrix[matrix.length] = pre
     }
@@ -97,22 +103,94 @@ function PreTable(matrix, storage, requirement)
     return matrix
 }
 
-function MinElement(matrix)
+// Поиск минимального эллемента в матрице
+function MinElement(matrix, storage, requirement)
 {
-    let min = 0;
+    let min = MaxElement(matrix);
+    let res = []
 
     for (let i = 0; i < matrix.length; i++)
     {
-        for (let j = 0; j < matrix[i].length; i++)
+        for (let j = 0; j < matrix[i].length; j++)
         {
-            if (min > matrix[i][j]) min = matrix[i][j]
+            if (min >= matrix[i][j] && matrix[i][j] != 0 && matrix[i][j] != -1 && storage[i] != 0 && requirement[j] != 0) 
+            {
+                min = matrix[i][j]
+                res[0] = i
+                res[1] = j
+            }
         }
     }
+
+    return res
+}
+
+function MaxElement(matrix)
+{
+    let max = 0
+
+    for (let i = 0; i < matrix.length; i++)
+    {
+        for (let j = 0; j < matrix[i].length; j++)
+        {
+            if (max < matrix[i][j]) max = matrix[i][j]
+        }
+    }
+
+    return max
+}
+
+function NullCheck(matrix)
+{
+    let res = true
+    let preres = true
+
+    for (let i = 0; i < matrix.length; i++)
+    {
+        for (let j = 0; j < matrix[i].length; j++)
+        {
+            if (matrix[i][j] <= 0 && !preres) preres = true
+
+            else preres = false
+        }
+    }
+
+   if (preres) res == false
+
+   return res
 }
 
 function ReferencePlan(matrix, storage, requirement)
 {
-    let min = MinElement(matrix)
+    let F = 0
 
-    
+    while (NullCheck(matrix))
+    {
+        if (MinElement(matrix, storage, requirement).length != 0)
+        {
+            let min = MinElement(matrix, storage, requirement)
+            let arr = [storage[min[0]], requirement[min[1]]]
+            let minMinus = Math.min.apply(null, arr)
+
+            F += (matrix[min[0]][min[1]] * minMinus)
+            console.log(matrix[min[0]][min[1]] + " " + minMinus + " = " + F)
+
+            // console.log(storage)
+            // console.log(requirement)
+            // console.log(matrix)
+
+            storage[min[0]] -= minMinus
+            requirement[min[1]] -= minMinus
+            matrix[min[0]][min[1]] = -1
+        }
+
+        else break
+    }
+
+    return F
+}
+
+function UpgradeReferencePlan()
+{
+
 }
