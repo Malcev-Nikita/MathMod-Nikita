@@ -1,6 +1,8 @@
 let result_div = document.getElementsByClassName("result")[0]
 let result;
 
+let examination = []
+
 // Вывод решения в программе
 function Result(row, column)
 {
@@ -108,6 +110,7 @@ function MinElement(matrix, storage, requirement)
 {
     let min = MaxElement(matrix);
     let res = []
+    let a = 0
 
     for (let i = 0; i < matrix.length; i++)
     {
@@ -118,6 +121,9 @@ function MinElement(matrix, storage, requirement)
                 min = matrix[i][j]
                 res[0] = i
                 res[1] = j
+
+                examination[a] = res
+                a++
             }
         }
     }
@@ -173,11 +179,6 @@ function ReferencePlan(matrix, storage, requirement)
             let minMinus = Math.min.apply(null, arr)
 
             F += (matrix[min[0]][min[1]] * minMinus)
-            console.log(matrix[min[0]][min[1]] + " " + minMinus + " = " + F)
-
-            // console.log(storage)
-            // console.log(requirement)
-            // console.log(matrix)
 
             storage[min[0]] -= minMinus
             requirement[min[1]] -= minMinus
@@ -190,7 +191,23 @@ function ReferencePlan(matrix, storage, requirement)
     return F
 }
 
-function UpgradeReferencePlan()
+function UpgradeReferencePlan(matrix, storage, requirement)
 {
+    let u = []
+    let v = []
 
+    u[0] = 0
+
+    for (let i = 0; i < storage.length; i++)
+    {
+        for (let j = 0; j < requirement.length; j++)
+        {
+            if (i == 0)
+            {
+                v[j] = matrix[examination[i]][examination[j]]
+            }
+            
+            else if (examination[i][j] )
+        }
+    }
 }
