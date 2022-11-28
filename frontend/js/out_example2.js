@@ -207,7 +207,7 @@ function UpgradeReferencePlan(matrix, storage, requirement)
                 v[j] = matrix[examination[i]][examination[j]]
             }
             
-            else if (examination[i][j] )
+            else if (examination[i]  == [])
         }
     }
 }
