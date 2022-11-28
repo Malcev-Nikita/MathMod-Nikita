@@ -198,16 +198,11 @@ function UpgradeReferencePlan(matrix, storage, requirement)
 
     u[0] = 0
 
-    for (let i = 0; i < storage.length; i++)
+    for (let i = 0; i < examination.length; i++)
     {
-        for (let j = 0; j < requirement.length; j++)
+        for (let j = 0; j < examination[i].length; j++)
         {
-            if (i == 0)
-            {
-                v[j] = matrix[examination[i]][examination[j]]
-            }
             
-            else if (examination[i]  == [])
         }
     }
 }
