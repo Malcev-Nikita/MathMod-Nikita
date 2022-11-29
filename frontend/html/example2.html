@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Калькулятор для решения транспортных задач</title>
+</head>
+<body>
+    
+    <section class="example example2">
+        <a href="index.html"><button class="button exit">На главную</button></a>
+
+        <h2>Калькулятор для решения транспортных задач</h2>
+
+        <div class="first_step first_step_active">
+            <div>
+                <p>Выберите количество строк</p>
+                <select class="row_count">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+            </div>
+
+            <div>
+                <p>Выберите количество столбцов</p>
+                <select class="column_count">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="second_step">
+            <h3>Матрица тарифов</h3>
+            <table class="second_step__table"></table>
+            <table class="second_step__storage"></table>
+            <table class="second_step__requirement"></table>
+        </div>
+
+        <div class="third_step">
+            <div class="result"></div>
+        </div>
+
+        <div class="section_button">
+            <button class="button back_step">Назад</button>
+            <button class="button next_step">Далее</button>
+        </div>
+    </section>
+
+    <section class="error">
+        <img src="/image/icon/close.png" class="error__close">
+        <p class="error__text"></p>
+    </section>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="/js/Class/error.js"></script>
+    <script src="/js/button.js"></script>
+    <script src="/js/example2/example2.js"></script>
+    <script src="/js/example2/out_example2.js"></script>
+    <script src="/js/example2/button_step.js"></script>
+</body>
+</html>

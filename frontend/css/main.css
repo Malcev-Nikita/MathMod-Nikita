@@ -202,6 +202,7 @@
 html {
   margin: 0;
   height: 100%;
+  font-family: sans-serif;
 }
 
 body {
@@ -223,13 +224,10 @@ h2 {
   margin-bottom: 10%;
 }
 
-.example {
-  width: 0%;
-  height: 100%;
-  background: #56677e;
+.example .exit {
   position: absolute;
-  top: 0;
-  overflow: hidden;
+  top: 20px;
+  left: 10px;
 }
 .example h2 {
   font-size: 24px;
@@ -240,12 +238,6 @@ h2 {
   width: 35px;
   top: 17px;
   cursor: pointer;
-}
-.example_active {
-  display: block;
-  width: 50%;
-  -webkit-animation: window_open 0.5s ease-out;
-          animation: window_open 0.5s ease-out;
 }
 .example_unactive {
   -webkit-animation: window_close 0.2s ease-in;

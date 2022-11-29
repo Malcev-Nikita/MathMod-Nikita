@@ -4,6 +4,7 @@
 html
     margin: 0
     height: 100%
+    font-family: sans-serif
 body
     margin: 0
     overflow-y: hidden
@@ -20,12 +21,10 @@ h2
 
 
 .example
-    width: 0%
-    height: 100%
-    background: #56677e
-    position: absolute
-    top: 0
-    overflow: hidden
+    .exit
+        position: absolute
+        top: 20px
+        left: 10px
 
     h2
         font-size: 24px
@@ -36,11 +35,6 @@ h2
         width: 35px
         top: 17px
         cursor: pointer
-    
-    &_active
-        display: block
-        width: 50%
-        animation: window_open 0.5s ease-out
 
     &_unactive
         animation: window_close 0.2s ease-in
