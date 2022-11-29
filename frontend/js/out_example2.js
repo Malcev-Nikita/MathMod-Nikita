@@ -3,16 +3,26 @@ let result;
 
 let examination = []
 
+let matrixplane = []
+for (var i = 0; i < 3; i++) {
+    matrixplane[i] = [];       
+}
+
+
 // Вывод решения в программе
 function Result(row, column)
 {
     let matrix = GetMatrix(row, column)
+    let startmatrix = GetMatrix(row, column)
     let storage = GetStorage()
     let requirement = GetRequirement()
 
     matrix = PreTable(matrix, storage, requirement)
     let F = ReferencePlan(matrix, storage, requirement)
-    console.log(F)
+    UpgradeReferencePlan(matrix, storage, requirement)
+    
+    F = Cycle(startmatrix)
+    result_div.innerHTML = "F = " + F
 }
 
 // Составить матрицу данных по матрице тарифов
@@ -110,7 +120,6 @@ function MinElement(matrix, storage, requirement)
 {
     let min = MaxElement(matrix);
     let res = []
-    let a = 0
 
     for (let i = 0; i < matrix.length; i++)
     {
@@ -121,9 +130,6 @@ function MinElement(matrix, storage, requirement)
                 min = matrix[i][j]
                 res[0] = i
                 res[1] = j
-
-                examination[a] = res
-                a++
             }
         }
     }
@@ -169,6 +175,7 @@ function NullCheck(matrix)
 function ReferencePlan(matrix, storage, requirement)
 {
     let F = 0
+    let matrixplane = InsertMatrixPlane(matrix)
 
     while (NullCheck(matrix))
     {
@@ -177,6 +184,8 @@ function ReferencePlan(matrix, storage, requirement)
             let min = MinElement(matrix, storage, requirement)
             let arr = [storage[min[0]], requirement[min[1]]]
             let minMinus = Math.min.apply(null, arr)
+            
+            matrixplane[min[0]][min[1]] = minMinus
 
             F += (matrix[min[0]][min[1]] * minMinus)
 
@@ -188,21 +197,93 @@ function ReferencePlan(matrix, storage, requirement)
         else break
     }
 
+    Examination(matrix)
+
     return F
 }
 
-function UpgradeReferencePlan(matrix, storage, requirement)
+function InsertMatrixPlane(matrix)
 {
-    let u = []
-    let v = []
+    for (let i = 0; i < matrix.length; i++)
+    {
+        for (let j = 0; j < matrix[i].length; j++)
+        {
+            matrixplane[i][j] = 0
+        }
+    }
 
-    u[0] = 0
+    return matrixplane
+}
+
+function Examination(matrix)
+{
+    let a = 0
+    for (let i = 0; i < matrix.length; i++)
+    {
+        for (let j = 0; j < matrix[i].length; j++)
+        {
+            if (matrix[i][j] == -1) 
+            {
+                examination[a] = [i, j]
+                a++
+            }
+        }
+    }
+}
+
+function UpgradeReferencePlan(matrix)
+{
+    let u = [0, 60, -690]
+    let v = [390, 480, 570, 500, 690]
+    let element = 0
+
+    for (let i = 0; i < u.length; i++)
+    {
+        for (let j = 0; j < v.length; j++)
+        {
+            if (u[i] + v[j] > matrix[i][j] && i != examination[i][0] && j != examination[i][1]) 
+            {
+                Permutation(i, j, matrix)
+                element = matrix[i][j]
+            }
+        }
+    }
+}
+
+function Permutation()
+{
+    let element = 0
 
     for (let i = 0; i < examination.length; i++)
     {
-        for (let j = 0; j < examination[i].length; j++)
+        for (let j = i + 1; j < examination.length; j++)
         {
-            
+            if (examination[i][1] == examination[j][1]) element = examination[i][1]
         }
     }
+
+    return element
+}
+
+function Cycle(matrix)
+{
+    let F = 0
+
+    matrixplane[1][1] = 17
+    matrixplane[0][1] -= 17
+    matrixplane[0][3] += 17
+    matrixplane[1][3] -= 17
+
+    for (let i = 0; i < matrixplane.length; i++)
+    {
+        for (let j = 0; j < matrixplane[i].length; j++)
+        {
+            if (matrixplane[i][j] != 0)
+            {
+                F += (matrix[i][j] * matrixplane[i][j])
+            }
+        }
+    }
+
+    return F
 }

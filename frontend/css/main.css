@@ -351,14 +351,7 @@ h2 {
   height: 500px;
   max-width: 600px;
   max-height: 500px;
-}
-.result p {
-  text-align: left;
-}
-.result table tr th {
-  border: 1px solid #fff;
-  width: 50px;
-  height: 30px;
+  font-size: 30px;
 }
 
 @-webkit-keyframes window_close {
