@@ -13,6 +13,10 @@ let second_step__requirement = document.getElementsByClassName('second_step__req
 let row_count
 let column_count
 
+let datematrix = [[520, 480, 650, 500, 720], [450, 525, 630, 560, 750]]
+let datestorage = [40, 70]
+let daterequirement = [20, 30, 15, 27, 28]
+
 let steps = [first_step, second_step, third_step]
 
 function CreateTableSecondStap(row, column)
@@ -32,6 +36,7 @@ function CreateTableSecondStap(row, column)
             let th = document.createElement("th")
             let input = document.createElement("input")
             input.classList.add("example2_input_matrix")
+            input.value = datematrix[i][j]
 
             th.appendChild(input)
             tr.appendChild(th)
@@ -59,6 +64,7 @@ function CreateTableSecondStapStorage(row)
         let th = document.createElement("th")
         let input = document.createElement("input")
         input.classList.add("example2_input_storage")
+        input.value = datestorage[i]
 
         th.appendChild(input)
         tr.appendChild(th)
@@ -85,6 +91,7 @@ function CreateTableSecondStaprequirement(column)
         let th = document.createElement("th")
         let input = document.createElement("input")
         input.classList.add("example2_input_requirement")
+        input.value = daterequirement[i]
 
         th.appendChild(input)
         tr.appendChild(th)
