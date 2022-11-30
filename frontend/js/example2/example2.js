@@ -1,5 +1,8 @@
 let step = 0
 
+let error_log
+let error__close = document.getElementsByClassName("error__close")[0]
+
 let back_step = document.getElementsByClassName('back_step')[0]
 let next_step = document.getElementsByClassName('next_step')[0]
 
@@ -17,7 +20,6 @@ let datematrix = [[520, 480, 650, 500, 720], [450, 525, 630, 560, 750]]
 let datestorage = [40, 70]
 let daterequirement = [20, 30, 15, 27, 28]
 
-let steps = [first_step, second_step, third_step]
 
 function CreateTableSecondStap(row, column)
 {
@@ -100,12 +102,17 @@ function CreateTableSecondStaprequirement(column)
     }
 }
 
-back_step.addEventListener('click', function() 
-{
-    step = back(step)
-})
-
 next_step.addEventListener('click', function() 
 {
-    step = next(step)
+    step = new Step(step).Next()
+})
+
+back_step.addEventListener('click', function() 
+{
+    step = new Step(step).Back()
+})
+
+error__close.addEventListener('click', function()
+{
+    error_log.Close()
 })

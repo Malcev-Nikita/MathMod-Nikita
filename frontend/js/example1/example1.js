@@ -1,5 +1,8 @@
 let step = 0
 
+let error_log
+let error__close = document.getElementsByClassName("error__close")[0]
+
 let back_step = document.getElementsByClassName('back_step')[0]
 let next_step = document.getElementsByClassName('next_step')[0]
 
@@ -15,12 +18,18 @@ let column_count
 
 let steps = [first_step, second_step, third_step]
 
-back_step.addEventListener('click', function() 
-{
-    step = back(step)
-})
 
 next_step.addEventListener('click', function() 
 {
-    step = next(step)
+    step = new Step(step).Next()
+})
+
+back_step.addEventListener('click', function() 
+{
+    step = new Step(step).Back()
+})
+
+error__close.addEventListener('click', function()
+{
+    error_log.Close()
 })

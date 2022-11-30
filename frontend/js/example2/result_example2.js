@@ -22,7 +22,6 @@ function Result(row, column)
     UpgradeReferencePlan(matrix, storage, requirement)
     
     F = Cycle(startmatrix)
-    result_div.innerHTML = "F = " + F
 }
 
 // Составить матрицу данных по матрице тарифов

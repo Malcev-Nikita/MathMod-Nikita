@@ -1,0 +1,80 @@
+.example
+
+    .exit
+        position: absolute
+        top: 20px
+        left: 10px
+        width: 60px
+        height: 40px
+        font-size: 22px
+
+    h2
+        font-size: 24px
+        margin-top: 40px
+
+    &__close
+        position: absolute
+        width: 35px
+        top: 17px
+        cursor: pointer
+
+    .first_step
+        display: none
+
+        &_active
+            display: block
+
+        div
+            display: flex
+            justify-content: center
+            margin-top: 30px
+
+        select
+            margin-left: 20px
+            margin-top: 10px
+            transform: translateY(-11px)
+    
+    .second_step
+        display: none
+        text-align: center
+
+        &_active
+            display: inline-block
+
+
+        &__table
+            margin: 0 auto
+
+            input, th
+                width: 60px
+                height: 30px
+        
+        h3
+            font-size: 16px
+            font-weight: 400
+            margin-left: -62px
+            transform: translateY(29px)
+
+    .third_step
+        display: none
+
+        &_active
+            display: inline-block
+
+        .result
+            width: 1000px
+            height: 700px
+            font-size: 16px
+            text-align: left
+            letter-spacing: 2px
+            line-height: 20px
+            overflow: auto
+
+            table 
+                margin: 20px
+
+                th
+                    text-align: center
+                    width: 50px
+                    height: 30px
+                    border: 1px solid #fff
