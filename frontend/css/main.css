@@ -60,9 +60,11 @@
 }
 .button div span {
   display: block;
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   transform: translateZ(0);
-  animation: var(--name, none) 0.7s linear forwards 0.18s;
+  -webkit-animation: var(--name, none) 0.7s linear forwards 0.18s;
+          animation: var(--name, none) 0.7s linear forwards 0.18s;
 }
 .button.in:not(.out) {
   --c: var(--color-hover);
@@ -95,13 +97,15 @@
   height: 150px;
   margin-left: -250px;
   margin-top: -75px;
-  animation: error_open 0.4s ease-in;
+  -webkit-animation: error_open 0.4s ease-in;
+          animation: error_open 0.4s ease-in;
 }
 .error_unactive {
   width: 0px;
   height: 0px;
   overflow: hidden;
-  animation: error_close 0.2s ease-out;
+  -webkit-animation: error_close 0.2s ease-out;
+          animation: error_close 0.2s ease-out;
 }
 .error__close {
   width: 30px;
@@ -114,6 +118,33 @@
   font-size: 17px;
   font-weight: 700;
   margin-top: 55px;
+}
+
+@-webkit-keyframes error_open {
+  0% {
+    display: block;
+    width: 0px;
+    hegiht: 0px;
+    margin: 0;
+  }
+  50% {
+    width: 550px;
+    height: 175px;
+    margin-left: -275px;
+    margin-top: -87.5px;
+  }
+  75% {
+    width: 490px;
+    height: 145px;
+    margin-left: -245px;
+    margin-top: -72.5px;
+  }
+  100% {
+    width: 500px;
+    height: 150px;
+    margin-left: -250px;
+    margin-top: -75px;
+  }
 }
 
 @keyframes error_open {
@@ -140,6 +171,19 @@
     height: 150px;
     margin-left: -250px;
     margin-top: -75px;
+  }
+}
+@-webkit-keyframes error_close {
+  0% {
+    width: 500px;
+    height: 150px;
+    margin-left: -250px;
+    margin-top: -75px;
+  }
+  100% {
+    width: 0px;
+    height: 0px;
+    margin: 0;
   }
 }
 @keyframes error_close {
@@ -204,6 +248,33 @@
   width: 60px;
   height: 30px;
 }
+.example .second_step__seeks {
+  display: inline-block;
+}
+.example .second_step__seeks select {
+  height: 36px;
+}
+.example .second_step__borders {
+  display: inline-block;
+}
+.example .second_step__borders input {
+  width: 60px;
+  height: 30px;
+}
+.example .second_step__function {
+  display: flex;
+  margin-top: 30px;
+}
+.example .second_step__function input {
+  width: 60px;
+  height: 30px;
+}
+.example .second_step__function select {
+  height: 38px;
+}
+.example .second_step__function p {
+  margin: 0 10px;
+}
 .example .second_step h3 {
   font-size: 16px;
   font-weight: 400;
@@ -242,6 +313,14 @@
   color: yellow;
   font-size: 20px;
   font-weight: 900;
+}
+
+.example1 .second_step__table {
+  display: inline-block;
+}
+.example1 .yellow {
+  background: #FFDF80;
+  color: #000;
 }
 
 html {

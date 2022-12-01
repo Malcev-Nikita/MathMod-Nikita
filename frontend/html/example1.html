@@ -17,7 +17,7 @@
                 <p>Выберите количество строк</p>
                 <select class="row_count">
                     <option value="2">2</option>
-                    <option value="3">3</option>
+                    <option value="3" selected="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
@@ -30,7 +30,7 @@
                 <select class="column_count">
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option value="4" selected="4">4</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
                     <option value="7">7</option>
@@ -40,25 +40,388 @@
         </div>
 
         <div class="second_step">
-            <h3>Ограничения</h3>
             <table class="second_step__table"></table>
+            <table class="second_step__seeks"></table>
             <table class="second_step__borders"></table>
 
-            <h3>Целевая функция</h3>
             <table class="second_step__function"></table>
-            <select class ="equating">
-                <option value="right">&#8594;</option>
-                <option value="left">&#8592;</option>
-                <option value="=">=</option>
-            </select>
-            <select class="column_count">
-                <option value="max">max</option>
-                <option value="min">min</option>
-            </select>
         </div>
 
         <div class="third_step">
-            <div class="result"></div>
+            <div class="result">
+                2x<sub>1</sub> + 3x<sub>2</sub> + x<sub>3</sub> + 2x<sub>4</sub> &#60;= 30
+                <br>
+                4x<sub>1</sub> + 2x<sub>2</sub> + x<sub>3</sub> + 2x<sub>4</sub> &#60;= 40
+                <br>
+                x<sub>1</sub> + 2x<sub>2</sub> + 3x<sub>3</sub> + x<sub>4</sub> &#60;= 25
+                <br>
+                <br>
+                F<sub>max</sub> = 2x<sub>1</sub> + x<sub>2</sub> + 3x<sub>3</sub> + 5x<sub>4</sub>
+                <br>
+                <br>
+                Приведение к канонической форме:
+                <br>
+                1) Преобразуем 1-ое неравенство '&#60;=' в равенство, введением дополнительной переменной x<sub>5</sub>
+                <br>
+                2) Преобразуем 2-ое неравенство '&#60;=' в равенство, введением дополнительной переменной x<sub>6</sub>
+                <br>
+                3) Преобразуем 3-ье неравенство '&#60;=' в равенство, введением дополнительной переменной x<sub>7</sub>
+                <br>
+                <br>
+                2x<sub>1</sub> + 3x<sub>2</sub> + x<sub>3</sub> + 2x<sub>4</sub> + x<sub>5</sub> &#60;= 30
+                <br>
+                4x<sub>1</sub> + 2x<sub>2</sub> + x<sub>3</sub> + 2x<sub>4</sub> + x<sub>6</sub> &#60;= 40
+                <br>
+                x<sub>1</sub> + 2x<sub>2</sub> + 3x<sub>3</sub> + x<sub>4</sub> + x<sub>7</sub> &#60;= 25
+                <br>
+                <br>
+                F<sub>max</sub> = 2x<sub>1</sub> + x<sub>2</sub> + 3x<sub>3</sub> + 5x<sub>4</sub>
+                <br>
+                <br>
+                F<sub>max</sub> = - 2x<sub>1</sub> - x<sub>2</sub> - 3x<sub>3</sub> - 5x<sub>4</sub>
+                <br>
+                <br>
+                <b>Составляем симплекс-таблицу:</b>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>b</th>
+                        <th>x<sub>1</sub></th>
+                        <th>x<sub>2</sub></th>
+                        <th>x<sub>3</sub></th>
+                        <th>x<sub>4</sub></th>
+                        <th>x<sub>5</sub></th>
+                        <th>x<sub>6</sub></th>
+                        <th>x<sub>7</sub></th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>5</sub></th>
+                        <th>30</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>1</th>
+                        <th>0</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>6</sub></th>
+                        <th>40</th>
+                        <th>4</th>
+                        <th>2</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>0</th>
+                        <th>1</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>7</sub></th>
+                        <th>25</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>1</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>F<sub>max</sub></th>
+                        <th>0</th>
+                        <th>-2</th>
+                        <th>-1</th>
+                        <th>-3</th>
+                        <th>-5</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>0</th>
+                    </tr>
+                </table>
+                <br>
+                Среди коэффициентов целевой функции выбираем максимальный по модулю отрицательный элемент. Он будет задавать разрешающий столбец.
+                <br>
+                <br>
+                Разрешающая строка берется, такая что отношение свободного члена к элементу находящемуся на пересечении разрешающего столбца, и выбранной строки было минимальным и не отрицательным.
+                <br>
+                <br>
+                Разрешающий столбец: x4
+                <br>
+                Разрешающая строка: x5
+                <br>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>b</th>
+                        <th>x<sub>1</sub></th>
+                        <th>x<sub>2</sub></th>
+                        <th>x<sub>3</sub></th>
+                        <th class="yellow">x<sub>4</sub></th>
+                        <th>x<sub>5</sub></th>
+                        <th>x<sub>6</sub></th>
+                        <th>x<sub>7</sub></th>
+                        <th>b/x<sub>4</sub></th>
+                    </tr>
+                    <tr>
+                        <th class="yellow">x<sub>5</sub></th>
+                        <th class="yellow">30</th>
+                        <th class="yellow">2</th>
+                        <th class="yellow">3</th>
+                        <th class="yellow">1</th>
+                        <th class="yellow">2</th>
+                        <th class="yellow">1</th>
+                        <th class="yellow">0</th>
+                        <th class="yellow">0</th>
+                        <th class="yellow">15</th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>6</sub></th>
+                        <th>40</th>
+                        <th>4</th>
+                        <th>2</th>
+                        <th>1</th>
+                        <th class="yellow">2</th>
+                        <th>0</th>
+                        <th>1</th>
+                        <th>0</th>
+                        <th>20</th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>7</sub></th>
+                        <th>25</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th class="yellow">1</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>1</th>
+                        <th>25</th>
+                    </tr>
+                    <tr>
+                        <th>F<sub>max</sub></th>
+                        <th>0</th>
+                        <th>-2</th>
+                        <th>-1</th>
+                        <th>-3</th>
+                        <th class="yellow">-5</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th></th>
+                    </tr>
+                </table>
+                <br>
+                Пересчитываем таблицу (Итерация 1):
+                <br>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>b</th>
+                        <th>x<sub>1</sub></th>
+                        <th>x<sub>2</sub></th>
+                        <th>x<sub>3</sub></th>
+                        <th>x<sub>4</sub></th>
+                        <th>x<sub>5</sub></th>
+                        <th>x<sub>6</sub></th>
+                        <th>x<sub>7</sub></th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>5</sub></th>
+                        <th>15</th>
+                        <th>1</th>
+                        <th>1.5</th>
+                        <th>0.5</th>
+                        <th>1</th>
+                        <th>0.5</th>
+                        <th>0</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>6</sub></th>
+                        <th>10</th>
+                        <th>2</th>
+                        <th>-1</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>-1</th>
+                        <th>1</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>7</sub></th>
+                        <th>10</th>
+                        <th>0</th>
+                        <th>0.5</th>
+                        <th>2.5</th>
+                        <th>0</th>
+                        <th>-0.5</th>
+                        <th>0</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>F<sub>max</sub></th>
+                        <th>75</th>
+                        <th>3</th>
+                        <th>6.5</th>
+                        <th>-0.5</th>
+                        <th>0</th>
+                        <th>2.5</th>
+                        <th>0</th>
+                        <th>0</th>
+                    </tr>
+                </table>
+                <br>
+                Среди коэффициентов целевой функции выбираем максимальный по модулю отрицательный элемент. Он будет задавать разрешающий столбец.
+                <br>
+                <br>
+                Разрешающая строка берется, такая что отношение свободного члена к элементу находящемуся на пересечении разрешающего столбца, и выбранной строки было минимальным и не отрицательным.
+                <br>
+                <br>
+                Разрешающий столбец: x3
+                <br>
+                Разрешающая строка: x7
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>b</th>
+                        <th>x<sub>1</sub></th>
+                        <th>x<sub>2</sub></th>
+                        <th class="yellow">x<sub>3</sub></th>
+                        <th>x<sub>4</sub></th>
+                        <th>x<sub>5</sub></th>
+                        <th>x<sub>6</sub></th>
+                        <th>x<sub>7</sub></th>
+                        <th>b/x<sub>3</sub></th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>5</sub></th>
+                        <th>15</th>
+                        <th>1</th>
+                        <th>1.5</th>
+                        <th class="yellow">0.5</th>
+                        <th>1</th>
+                        <th>0.5</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>30</th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>6</sub></th>
+                        <th>10</th>
+                        <th>2</th>
+                        <th>-1</th>
+                        <th class="yellow">0</th>
+                        <th>0</th>
+                        <th>-1</th>
+                        <th>1</th>
+                        <th>0</th>
+                        <th>-</th>
+                    </tr>
+                    <tr>
+                        <th class="yellow">x<sub>7</sub></th>
+                        <th class="yellow">10</th>
+                        <th class="yellow">0</th>
+                        <th class="yellow">0.5</th>
+                        <th class="yellow">2.5</th>
+                        <th class="yellow">0</th>
+                        <th class="yellow">-0.5</th>
+                        <th class="yellow">0</th>
+                        <th class="yellow">1</th>
+                        <th class="yellow">4</th>
+                    </tr>
+                    <tr>
+                        <th>F<sub>max</sub></th>
+                        <th>75</th>
+                        <th>3</th>
+                        <th>6.5</th>
+                        <th class="yellow">-0.5</th>
+                        <th>0</th>
+                        <th>2.5</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th></th>
+                    </tr>
+                </table>
+                <br>
+                Пересчитываем таблицу (Итерация 2):
+                <br>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>b</th>
+                        <th>x<sub>1</sub></th>
+                        <th>x<sub>2</sub></th>
+                        <th>x<sub>3</sub></th>
+                        <th>x<sub>4</sub></th>
+                        <th>x<sub>5</sub></th>
+                        <th>x<sub>6</sub></th>
+                        <th>x<sub>7</sub></th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>5</sub></th>
+                        <th>13</th>
+                        <th>1</th>
+                        <th>1.4</th>
+                        <th>0</th>
+                        <th>1</th>
+                        <th>0.6</th>
+                        <th>0</th>
+                        <th>-0.2</th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>6</sub></th>
+                        <th>10</th>
+                        <th>2</th>
+                        <th>-1</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>-1</th>
+                        <th>1</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>x<sub>7</sub></th>
+                        <th>4</th>
+                        <th>0</th>
+                        <th>0.2</th>
+                        <th>1</th>
+                        <th>0</th>
+                        <th>-0.2</th>
+                        <th>0</th>
+                        <th>0.4</th>
+                    </tr>
+                    <tr>
+                        <th>F<sub>max</sub></th>
+                        <th>77</th>
+                        <th>3</th>
+                        <th>6.6</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>2.4</th>
+                        <th>0</th>
+                        <th>0.2</th>
+                    </tr>
+                </table>
+                Задача решена. Все коэффициенты при целевой функции неотрицательны.
+                <br>
+                <br>
+                Значения переменных:
+                <br>
+                x<sub>1</sub> = 0
+                <br>
+                x<sub>2</sub> = 0
+                <br>
+                x<sub>3</sub> = 4
+                <br>
+                x<sub>4</sub> = 13
+                <br>
+                <br>
+                Значение целевой функции:
+                <br>
+                F(x)<sub>max</sub> = 77
+            </div>
         </div>
         <div class="section_button">
             <button class="button back_step">Назад</button>
@@ -74,7 +437,7 @@
     <script type="text/javascript" src="/eel.js"></script>
 
     <script src="/js/Class/error.js"></script>
-    <script src="/js/Class/button_step.js"></script>
+    <script src="/js/example1/button_step.js"></script>
     <script src="/js/button.js"></script>
     <script src="/js/example1/example1.js"></script>
 </body>
