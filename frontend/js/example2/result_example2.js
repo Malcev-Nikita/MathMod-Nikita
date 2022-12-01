@@ -1,6 +1,9 @@
 let result_div = document.getElementsByClassName("result")[0]
 let result;
 
+let preres = document.getElementById("preres")
+let res = document.getElementById("res")
+
 let examination = []
 
 let matrixplane = []
@@ -19,9 +22,11 @@ function Result(row, column)
 
     matrix = PreTable(matrix, storage, requirement)
     let F = ReferencePlan(matrix, storage, requirement)
+    preres.innerHTML = F
     UpgradeReferencePlan(matrix, storage, requirement)
     
     F = Cycle(startmatrix)
+    res.innerHTML = F
 }
 
 // Составить матрицу данных по матрице тарифов
