@@ -1,5 +1,4 @@
 import eel
-import os
 
 
 if __name__ == '__main__':
